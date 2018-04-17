@@ -13,7 +13,7 @@ kubectl describe pods podName
 kubectl get rc
 kubectl edit rc nginx
 kubectl delete rc nginx
-run nginx --image=nginx:1.12.0 --replicas=2 --port=80
+kubectl run nginx --image=nginx:1.12.0 --replicas=2 --port=80
 kubectl expose deployment nginx --port=80 --target-port=80
 kubectl replace -f nginxDeployment.yml
 kubectl apply -f nginxDeployment.yml
