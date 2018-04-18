@@ -18,6 +18,7 @@ kubectl expose deployment nginx --port=80 --target-port=80
 kubectl replace -f nginxDeployment.yml
 kubectl apply -f nginxDeployment.yml
 kubectl set image deployment nginx nginx=nginx:1.13.1
+kubectl get endpoints
 ```
 
 General spec:
