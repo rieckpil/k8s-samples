@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: google-proxy
+subsets:
+  - addresses:
+    - ip: 216.58.198.4
+    ports:
+    - port: 80
