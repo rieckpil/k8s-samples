@@ -19,6 +19,10 @@ kubectl replace -f nginxDeployment.yml
 kubectl apply -f nginxDeployment.yml
 kubectl set image deployment nginx nginx=nginx:1.13.1
 kubectl get endpoints
+kubectl create secret generic mypassword --from-file=secrets/myverysecurepassword.txt
+kubectl create secret generic mypassword2 --from-literal=password=123456
+echo "aGVsbG9Xb3JsZA==" | base64 --decode
+kubectl create configmap example --from-file=configs/application.properties
 ```
 
 General spec:
