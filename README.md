@@ -27,6 +27,9 @@ kubectl edit configmap example
 kubectl top node
 kubectl top pod besteffort
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl describe --namespace=kube-system pod kubernetes-dashboard-5bd6f767c7-mfxs
+kubectl cluster-info
+kubectl delete --all pods --namespace=monitoring
 ```
 
 General spec:
