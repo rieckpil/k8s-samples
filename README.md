@@ -23,6 +23,10 @@ kubectl create secret generic mypassword --from-file=secrets/myverysecurepasswor
 kubectl create secret generic mypassword2 --from-literal=password=123456
 echo "aGVsbG9Xb3JsZA==" | base64 --decode
 kubectl create configmap example --from-file=configs/application.properties
+kubectl edit configmap example
+kubectl top node
+kubectl top pod besteffort
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
 General spec:
