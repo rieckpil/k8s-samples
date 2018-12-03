@@ -43,3 +43,14 @@ spec:
   the spec of Kubernetes object
 
 ```
+
+# Certified Kubernetes Application Developer
+
+* check readines
+
+```bash
+wget http://bit.ly/LFready -O ready-for.sh
+chmod 755 ready-for.sh
+./ready-for.sh LFD420
+./ready-for.sh --install LFD420
+```
