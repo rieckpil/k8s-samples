@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-spring-boot-java-microservice
+spec:
+  containers:
+  - name: simple-spring-boot-java-microservice
+    image: simple-spring-boot-java-microservice
+    ports:
+    - containerPort: 8080
