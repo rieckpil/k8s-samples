@@ -60,7 +60,11 @@ chmod 755 ready-for.sh
 * **kubelet** receives requests to run the containers, manages any necassary resources and watches over them on the local node
 * **kube-proxy** creates and manages networkng rules to expose the container on the network
 
+----
+
 * **pod** consists of one ore more containers which share an IP address, access to storage and namespace
 * **ReplicaSet** is a controller which deploys and restarts containers until the requested number of containers is running
 
 * parts of the master node: **kube-apiserver, kube-scheduler, etcd, cloud-controller-manager**
+
+* **api-server** is central to the operation of the cluster. All calls, both internal and external traffic are handled via this agent. All actions are accepted and validated by this agent, and it is the only connection to the etcd database
