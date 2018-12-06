@@ -57,7 +57,7 @@ chmod 755 ready-for.sh
 
 ## Processes within a node
 
-* **kubelet** receives requests to run the containers, manages any necassary resources and watches over them on the local node
+* **kubelet** receives requests to run the containers, manages any necassary resources and watches over them on the local node. It accepts pod specifications `PodSpecs` to configure the local node. It will also ensure the access or creation of storage, config maps or secrets if needed
 * **kube-proxy** creates and manages networkng rules to expose the container on the network
 
 ----
@@ -67,4 +67,8 @@ chmod 755 ready-for.sh
 
 * parts of the master node: **kube-apiserver, kube-scheduler, etcd, cloud-controller-manager**
 
-* **api-server** is central to the operation of the cluster. All calls, both internal and external traffic are handled via this agent. All actions are accepted and validated by this agent, and it is the only connection to the etcd database
+* **kube-apiserver** is central to the operation of the cluster. All calls, both internal and external traffic are handled via this agent. All actions are accepted and validated by this agent, and it is the only connection to the etcd database
+
+* **kube-scheduler** uses an algorithm to determine which node will host a Pod of containers
+
+* **etcd** a b+tree key-value store to store the state of the cluster. Values are always appended to the end and not updated
