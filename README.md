@@ -46,7 +46,7 @@ spec:
 
 # Certified Kubernetes Application Developer
 
-* check readines
+* check readiness
 
 ```bash
 wget http://bit.ly/LFready -O ready-for.sh
@@ -54,3 +54,13 @@ chmod 755 ready-for.sh
 ./ready-for.sh LFD420
 ./ready-for.sh --install LFD420
 ```
+
+## Processes within a node
+
+* **kubelet** receives requests to run the containers, manages any necassary resources and watches over them on the local node
+* **kube-proxy** creates and manages networkng rules to expose the container on the network
+
+* **pod** consists of one ore more containers which share an IP address, access to storage and namespace
+* **ReplicaSet** is a controller which deploys and restarts containers until the requested number of containers is running
+
+* parts of the master node: **kube-apiserver, kube-scheduler, etcd, cloud-controller-manager**
