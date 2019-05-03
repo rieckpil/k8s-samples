@@ -55,6 +55,22 @@ chmod 755 ready-for.sh
 ./ready-for.sh --install LFD420
 ```
 
+* add scripts
+
+```bash
+ wget https://training.linuxfoundation.org/cm/LFD259/LFD259_V2019-03-11_SOLUTIONS.tar.bz2 \
+--user=XXX --password=XXX
+tar -xvf LFD259 V2019-03-11 SOLUTIONS.tar.bz2
+```
+
+* update install step:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y kubernetes-cni=0.6.0-00
+sudo apt-get install -y kubeadm=1.13.1-00 kubelet=1.13.1-00 kubectl=1.13.1-00
+```
+
 ## Processes within a node
 
 * **kubelet** receives requests to run the containers, manages any necassary resources and watches over them on the local node. It accepts pod specifications `PodSpecs` to configure the local node. It will also ensure the access or creation of storage, config maps or secrets if needed
