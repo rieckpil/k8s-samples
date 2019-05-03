@@ -2,8 +2,9 @@
 
 ## Kubernetes commands
 
-```
+```bash
 kubectl version
+kubectl get deploy,rs,po,svc,ep
 kubectl logs podName
 kubectl explain pods
 kubectl create -f fileName.yml
@@ -15,9 +16,11 @@ kubectl edit rc nginx
 kubectl delete rc nginx
 kubectl run nginx --image=nginx:1.12.0 --replicas=2 --port=80
 kubectl expose deployment nginx --port=80 --target-port=80
+kubectl create deployment firstpod --image=nginx
 kubectl replace -f nginxDeployment.yml
 kubectl apply -f nginxDeployment.yml
 kubectl set image deployment nginx nginx=nginx:1.13.1
+kubectl get deployment try1 -o yaml --export > simpleapp.yml
 kubectl get endpoints
 kubectl create secret generic mypassword --from-file=secrets/myverysecurepassword.txt
 kubectl create secret generic mypassword2 --from-literal=password=123456
@@ -30,9 +33,20 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/s
 kubectl describe --namespace=kube-system pod kubernetes-dashboard-5bd6f767c7-mfxs
 kubectl cluster-info
 kubectl delete --all pods --namespace=monitoring
+
+sudo kompose convert -f docker-compose.yml -o localregistry.yml
+
 ```
 
-General spec:
+### Handling pods
+
+```bash
+kubectl get pod -o wide
+
+```
+
+
+## General spec:
 
 ```yml
 apiVersion: Kubernetes API version
