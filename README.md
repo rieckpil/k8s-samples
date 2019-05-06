@@ -45,6 +45,36 @@ kubectl get pod -o wide
 
 ```
 
+### ConfigMaps
+
+```bash
+kubectl create configmap colors \
+ --from-literal=text=black \
+ --from-file=./favorite \
+ --from-file=./primary/
+
+
+kubectl exec -c simpleapp -it try1-795c77c768-5qj9q -- /bin/bash -c 'cat /etc/cars/car.trim'
+
+...
+ spec:
+      containers:
+      - image: 10.110.131.105:5000/simpleapp:latest
+        volumeMounts:
+        - mountPath: /etc/cars
+          name: car-vol
+        env:
+        - name: ilike
+          valueFrom:
+            configMapKeyRef:
+              name: colors
+              key: favorite
+        envFrom:
+        - configMapRef:
+            name: colors
+
+
+```
 
 ## General spec:
 
