@@ -35,6 +35,12 @@ kubectl cluster-info
 kubectl delete --all pods --namespace=monitoring
 
 sudo kompose convert -f docker-compose.yml -o localregistry.yml
+kubectl rollout history deployment try1
+kubectl rollout history deployment try1 --revision=1 > one.out
+kubectl rollout undo --dry-run=true deployment/try1
+kubectl rollout undo deployment try1 --to-revision=1
+
+kubectl get events
 
 ```
 
