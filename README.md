@@ -42,6 +42,9 @@ kubectl rollout undo deployment try1 --to-revision=1
 
 kubectl get events
 
+kubectl get clusterroles
+kubectl get rolebinding
+
 ```
 
 ### Handling pods
@@ -50,6 +53,14 @@ kubectl get events
 kubectl get pod -o wide
 
 ```
+
+## Security
+
+```bash
+grep Cap /proc/1/status
+capsh --decode=00000000a80425fb
+```
+
 
 ### ConfigMaps
 
