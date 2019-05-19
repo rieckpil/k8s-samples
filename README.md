@@ -43,7 +43,7 @@ kubectl rollout undo deployment try1 --to-revision=1
 kubectl get events
 
 kubectl get clusterroles
-kubectl get rolebinding
+kubectl get rolebindings
 
 ```
 
@@ -91,6 +91,16 @@ kubectl exec -c simpleapp -it try1-795c77c768-5qj9q -- /bin/bash -c 'cat /etc/ca
             name: colors
 
 
+```
+
+## Troubleshooting
+
+```bash
+ps -elf |grep kube-proxy
+journalctl -a | grep proxy
+sudo iptables-save |grep secondapp
+
+kubectl -n kube-system get pod
 ```
 
 ## General spec:
