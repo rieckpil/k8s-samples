@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: basicpod
+  labels:
+    type: webserver
+spec:
+  volumes:
+   - name: weblog-pv-storage
+     persistentVolumeClaim:
+       claimName: weblog-pv-claim
+   - name: log-config
+     configMap:
+       name: fluentd-config
+  containers:
+   - name: webcont
+     image: nginx
+     ports:
+      - containerPort: 80
+     volumeMounts:
+       - mountPath: "/var/log/nginx"
+         name: weblog-pv-storage
+   - name: fdlogger
+     image: fluent/fluentd
+     env:
+      - name: FLUENTD_ARGS
+        value: -c /etc/fluentd-config/fluentd.conf
+     volumeMounts:
+       - mountPath: "/var/log"
+         name: weblog-pv-storage
+       - mountPath: "/etc/fluentd-config"
+         name: log-config

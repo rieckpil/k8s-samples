@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: secret-access-cr
+rules:
+ - apiGroups:
+   - ""
+   resources:
+   - secrets
+   verbs:
+   - get
+   - list

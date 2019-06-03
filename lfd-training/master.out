@@ -1,0 +1,248 @@
+This script is written to work with Ubuntu 16.04
+
+Disable swap until next reboot
+
+Update the local node
+Hit:1 http://security.ubuntu.com/ubuntu xenial-security InRelease
+Hit:2 http://archive.canonical.com/ubuntu xenial InRelease
+Hit:3 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial InRelease
+Hit:4 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates InRelease
+Hit:5 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  ureadahead
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 19.4 kB of archives.
+After this operation, 54.3 kB disk space will be freed.
+Get:1 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ureadahead amd64 0.100.0-19.1 [19.4 kB]
+Fetched 19.4 kB in 0s (69.9 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 106931 files and directories currently installed.)
+Preparing to unpack .../ureadahead_0.100.0-19.1_amd64.deb ...
+Unpacking ureadahead (0.100.0-19.1) over (0.100.0-19) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up ureadahead (0.100.0-19.1) ...
+
+Install Docker
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  bridge-utils cgroupfs-mount pigz ubuntu-fan
+Suggested packages:
+  mountall aufs-tools debootstrap docker-doc rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils cgroupfs-mount docker.io pigz ubuntu-fan
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 47.2 MB of archives.
+After this operation, 235 MB of additional disk space will be used.
+Get:1 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial/universe amd64 pigz amd64 2.3.1-2 [61.1 kB]
+Get:2 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial/main amd64 bridge-utils amd64 1.5-9ubuntu1 [28.6 kB]
+Get:3 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial/universe amd64 cgroupfs-mount all 1.2 [4,970 B]
+Get:4 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 docker.io amd64 18.09.2-0ubuntu1~16.04.1 [47.0 MB]
+Get:5 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ubuntu-fan all 0.12.8~16.04.2 [35.6 kB]
+Preconfiguring packages ...
+Fetched 47.2 MB in 2s (17.6 MB/s)
+Selecting previously unselected package pigz.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 106931 files and directories currently installed.)
+Preparing to unpack .../pigz_2.3.1-2_amd64.deb ...
+Unpacking pigz (2.3.1-2) ...
+Selecting previously unselected package bridge-utils.
+Preparing to unpack .../bridge-utils_1.5-9ubuntu1_amd64.deb ...
+Unpacking bridge-utils (1.5-9ubuntu1) ...
+Selecting previously unselected package cgroupfs-mount.
+Preparing to unpack .../cgroupfs-mount_1.2_all.deb ...
+Unpacking cgroupfs-mount (1.2) ...
+Selecting previously unselected package docker.io.
+Preparing to unpack .../docker.io_18.09.2-0ubuntu1~16.04.1_amd64.deb ...
+Unpacking docker.io (18.09.2-0ubuntu1~16.04.1) ...
+Selecting previously unselected package ubuntu-fan.
+Preparing to unpack .../ubuntu-fan_0.12.8~16.04.2_all.deb ...
+Unpacking ubuntu-fan (0.12.8~16.04.2) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19.1) ...
+Processing triggers for systemd (229-4ubuntu21.21) ...
+Setting up pigz (2.3.1-2) ...
+Setting up bridge-utils (1.5-9ubuntu1) ...
+Setting up cgroupfs-mount (1.2) ...
+Setting up docker.io (18.09.2-0ubuntu1~16.04.1) ...
+Adding group `docker' (GID 117) ...
+Done.
+Setting up ubuntu-fan (0.12.8~16.04.2) ...
+Processing triggers for ureadahead (0.100.0-19.1) ...
+Processing triggers for systemd (229-4ubuntu21.21) ...
+
+Install kubeadm and kubectl
+OK
+Hit:2 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial InRelease
+Hit:3 http://security.ubuntu.com/ubuntu xenial-security InRelease
+Hit:4 http://archive.canonical.com/ubuntu xenial InRelease
+Hit:5 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates InRelease
+Hit:6 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-backports InRelease
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8,993 B]
+Get:7 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [25.5 kB]
+Fetched 34.5 kB in 0s (43.9 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  kubernetes-cni
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,910 kB of archives.
+After this operation, 45.9 MB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubernetes-cni amd64 0.6.0-00 [5,910 kB]
+Fetched 5,910 kB in 0s (18.3 MB/s)
+Selecting previously unselected package kubernetes-cni.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 107204 files and directories currently installed.)
+Preparing to unpack .../kubernetes-cni_0.6.0-00_amd64.deb ...
+Unpacking kubernetes-cni (0.6.0-00) ...
+Setting up kubernetes-cni (0.6.0-00) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  cri-tools ebtables socat
+The following NEW packages will be installed:
+  cri-tools ebtables kubeadm kubectl kubelet socat
+0 upgraded, 6 newly installed, 0 to remove and 1 not upgraded.
+Need to get 40.0 MB of archives.
+After this operation, 218 MB of additional disk space will be used.
+Get:2 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ebtables amd64 2.0.10.4-3.4ubuntu2.16.04.2 [79.9 kB]
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 cri-tools amd64 1.12.0-00 [5,343 kB]
+Get:6 http://europe-west3-c.gce.clouds.archive.ubuntu.com/ubuntu xenial/universe amd64 socat amd64 1.7.3.1-1 [321 kB]
+Get:3 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.13.1-00 [19.0 MB]
+Get:4 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.13.1-00 [7,843 kB]
+Get:5 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.13.1-00 [7,359 kB]
+Fetched 40.0 MB in 3s (10.9 MB/s)
+Selecting previously unselected package cri-tools.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 107219 files and directories currently installed.)
+Preparing to unpack .../cri-tools_1.12.0-00_amd64.deb ...
+Unpacking cri-tools (1.12.0-00) ...
+Selecting previously unselected package ebtables.
+Preparing to unpack .../ebtables_2.0.10.4-3.4ubuntu2.16.04.2_amd64.deb ...
+Unpacking ebtables (2.0.10.4-3.4ubuntu2.16.04.2) ...
+Selecting previously unselected package socat.
+Preparing to unpack .../socat_1.7.3.1-1_amd64.deb ...
+Unpacking socat (1.7.3.1-1) ...
+Selecting previously unselected package kubelet.
+Preparing to unpack .../kubelet_1.13.1-00_amd64.deb ...
+Unpacking kubelet (1.13.1-00) ...
+Selecting previously unselected package kubectl.
+Preparing to unpack .../kubectl_1.13.1-00_amd64.deb ...
+Unpacking kubectl (1.13.1-00) ...
+Selecting previously unselected package kubeadm.
+Preparing to unpack .../kubeadm_1.13.1-00_amd64.deb ...
+Unpacking kubeadm (1.13.1-00) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19.1) ...
+Processing triggers for systemd (229-4ubuntu21.21) ...
+Setting up cri-tools (1.12.0-00) ...
+Setting up ebtables (2.0.10.4-3.4ubuntu2.16.04.2) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up socat (1.7.3.1-1) ...
+Setting up kubelet (1.13.1-00) ...
+Setting up kubectl (1.13.1-00) ...
+Setting up kubeadm (1.13.1-00) ...
+Processing triggers for ureadahead (0.100.0-19.1) ...
+Processing triggers for systemd (229-4ubuntu21.21) ...
+
+Installed - now to get Calico Project network plugin
+[init] Using Kubernetes version: v1.13.1
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Activating the kubelet service
+[certs] Using certificateDir folder "/etc/kubernetes/pki"
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [lfd259-k8s-v6zk localhost] and IPs [10.156.0.6 127.0.0.1 ::1]
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [lfd259-k8s-v6zk localhost] and IPs [10.156.0.6 127.0.0.1 ::1]
+[certs] Generating "ca" certificate and key
+[certs] Generating "apiserver" certificate and key
+[certs] apiserver serving cert is signed for DNS names [lfd259-k8s-v6zk kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.156.0.6]
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[apiclient] All control plane components are healthy after 27.002730 seconds
+[uploadconfig] storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.13" in namespace kube-system with the configuration for the kubelets in the cluster
+[patchnode] Uploading the CRI Socket information "/var/run/dockershim.sock" to the Node API object "lfd259-k8s-v6zk" as an annotation
+[mark-control-plane] Marking the node lfd259-k8s-v6zk as control-plane by adding the label "node-role.kubernetes.io/master=''"
+[mark-control-plane] Marking the node lfd259-k8s-v6zk as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: wepr8m.eedwwtazf2ifx6oe
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstraptoken] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstraptoken] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstraptoken] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstraptoken] creating the "cluster-info" ConfigMap in the "kube-public" namespace
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join 10.156.0.6:6443 --token wepr8m.eedwwtazf2ifx6oe --discovery-token-ca-cert-hash sha256:796e7c9ec83643a94ceb628ef862ae15e253e087733c0e07f82343cfc492e196
+
+Running the steps explained at the end of the init output for you
+Download Calico plugin and RBAC YAML files and apply
+clusterrole.rbac.authorization.k8s.io/calico-node created
+clusterrolebinding.rbac.authorization.k8s.io/calico-node created
+configmap/calico-config created
+service/calico-typha created
+deployment.apps/calico-typha created
+poddisruptionbudget.policy/calico-typha created
+daemonset.extensions/calico-node created
+serviceaccount/calico-node created
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+
+
+You should see this node in the output below
+It can take up to a mintue for node to show Ready status
+
+NAME              STATUS     ROLES    AGE   VERSION
+lfd259-k8s-v6zk   NotReady   master   19s   v1.13.1
+
+
+Script finished. Move to the next step

@@ -1,0 +1,35 @@
+deployment.extensions/try1 with revision #3
+Pod Template:
+  Labels:	app=try1
+	pod-template-hash=5cf5598878
+  Containers:
+   simpleapp:
+    Image:	10.110.131.105:5000/simpleapp:v2
+    Port:	<none>
+    Host Port:	<none>
+    Readiness:	exec [ls /etc/cars] delay=0s timeout=1s period=5s #success=1 #failure=3
+    Environment Variables from:
+      colors	ConfigMap	Optional: false
+    Environment:
+      ilike:	<set to the key 'favorite' of config map 'colors'>	Optional: false
+    Mounts:
+      /etc/cars from car-vol (rw)
+      /opt from nfs-vol (rw)
+   goproxy:
+    Image:	k8s.gcr.io/goproxy:0.1
+    Port:	8080/TCP
+    Host Port:	0/TCP
+    Liveness:	tcp-socket :8080 delay=15s timeout=1s period=20s #success=1 #failure=3
+    Readiness:	tcp-socket :8080 delay=5s timeout=1s period=10s #success=1 #failure=3
+    Environment:	<none>
+    Mounts:	<none>
+  Volumes:
+   car-vol:
+    Type:	ConfigMap (a volume populated by a ConfigMap)
+    Name:	fast-car
+    Optional:	false
+   nfs-vol:
+    Type:	PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:	pvc-one
+    ReadOnly:	false
+

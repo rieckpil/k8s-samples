@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fast-car
+  namespace: default
+data:
+  car.make: Ford
+  car.model: Mustang
+  car.trim: Shelby

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: secondapp
+  labels:
+    run: my-nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    nodePort: 32000
+  type: LoadBalancer
+  selector:
+    example: second

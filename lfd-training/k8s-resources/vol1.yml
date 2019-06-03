@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    type: local
+  name: task-pv-volume
+spec:
+  accessModes:
+   - ReadWriteOnce
+  capacity:
+    storage: 200Mi
+  hostPath:
+    path: /tmp/data
+  persistentVolumeReclaimPolicy: Retain
