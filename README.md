@@ -3,6 +3,8 @@
 ## Kubernetes commands
 
 ```bash
+kubectl cluster-info
+kubectl get nodes
 kubectl version
 kubectl get deploy,rs,po,svc,ep
 kubectl logs podName
