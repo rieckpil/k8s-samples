@@ -1,12 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: nginx
   creationTimestamp: null
   labels:
     run: nginx
-  name: nginx
+    environment: prod
+    tier: backend
+    type: webserver
+    app: nginx
+  annotations:
+    imageregistry: "k8s.registry.riecks.io"
+    branch: master
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       run: nginx
