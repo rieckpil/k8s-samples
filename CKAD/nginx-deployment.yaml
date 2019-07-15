@@ -15,9 +15,40 @@ spec:
         app: nginx
       name: nginx-pod
     spec:
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - "foo.local"
+            - "bar.local"
+        - ip: "10.1.2.3"
+          hostnames:
+            - "foo.remote"
+            - "bar.remote"
       containers:
         - name: nginx
           image: nginx:1.7.9
           ports:
             - containerPort: 80
-    
+          volumeMounts:
+            - name: cache-vol
+              mountPath: /cache
+            - name: mypd
+              mountPath: /var/log/nginx
+      volumes:
+        - name: cache-vol
+          emptyDir: {}
+        - name: mypd
+          persistentVolumeClaim: 
+            claimName: pvc001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 80

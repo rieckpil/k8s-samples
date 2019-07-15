@@ -27,6 +27,9 @@ kubectl logs multiple-container -c first-container
 kubectl get pods --show-labels
 
 kubectl scale deployment.v1.apps/nginx --replicas=5
+
+kubectl run curl --image=radial/busyboxplus:curl -i --tty
+
 ```
 
 ## Core Concepts 13%
@@ -37,6 +40,7 @@ kubectl scale deployment.v1.apps/nginx --replicas=5
 * High-level abstraction objects (controllers) build upon the basic objects: ReplicaSet, Deployment, StatefulSet, DeamonSet, Job
 * Kubernetes benefits: Service discovery and load balancing, storage orchestration, automated rollouts and rollbacks, automatic bin packing (CPU & MEM), Self-healing, secret and configuration management
 * Container runtimes: Docker, containerd, cri-o, rktlet and any implementation of the Kubernetes CRI (container runtime interface)
+
 
 ```shell
 kubectl create namespace nginx
@@ -93,5 +97,50 @@ kubectl rollout history deployment.v1.apps/nginx --revision=1
 
 ## Services & Networking 13%
 
+* ClusterIP is default
+* Services can be created without pod selectors, to be able to manually assign endpoints to the service
+* Proxying was used in favour of DNS
+* DNS should be always setup as a cluster add-on
+* ServiceTypes: ClusterIP, NodePort, LoadBalancer, ExternalName
+
+```shell
+kubectl expose deployment/nginx
+kubectl get ep nginx
+kubectl exec podname -- printenv | grep SERVICE
+
+kubectl get netpol
+
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: my-service
+subsets:
+  - addresses:
+      - ip: 192.0.2.42
+    ports:
+      - port: 9376
+```
 
 ## State Persistence 8%
+
+*
+*
+
+
+```shell
+
+
+```
