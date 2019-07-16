@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payara-deployment
+  labels:
+    app: payara
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payara
+  template:
+    metadata:
+      name: payara-pod
+      labels:
+        app: payara
+    spec:
+      containers:
+        - name: payara
+          image: payara/server-full:5.192
+          resources:
+            requests:
+              cpu: 0.3
+              memory: 256Mi
+          ports:
+            - containerPort: 8080
+      nodeSelector:
+        speed: fast
+      

@@ -27,19 +27,41 @@ spec:
       containers:
         - name: nginx
           image: nginx:1.7.9
+          env:
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: username
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: password
+            - name: DUKE
+              value: JAVA_11
+          resources:
+            requests:
+              cpu: 0.1
+              memory: 128M
+            limits:
+              cpu: 0.2
+              memory: 256M
           ports:
             - containerPort: 80
           volumeMounts:
             - name: cache-vol
               mountPath: /cache
-            - name: mypd
-              mountPath: /var/log/nginx
+            - name: mysecrets
+              mountPath: /secrets
+              readOnly: true
       volumes:
         - name: cache-vol
           emptyDir: {}
-        - name: mypd
-          persistentVolumeClaim: 
-            claimName: pvc001
+        - name: mysecrets
+          secret:
+            secretName: mysecret
+            defaultMode: 256
 ---
 apiVersion: v1
 kind: Service

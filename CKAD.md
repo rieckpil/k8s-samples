@@ -50,7 +50,7 @@ kubectl delete --all deploy -n=nginx
 kubectl run nginx --image=nginx -n=nginx --dry-run -o yaml > nginx.yaml
 kubectl create -f nginx.yaml -n nginx
 
-kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml --command  -- env > envpod.yaml
+kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml --command -- env > envpod.yaml
 kubectl apply -f envpod.yaml
 kubectl logs busybox
 
@@ -59,6 +59,21 @@ kubectl create namespace myns --dry-run -o yaml
 kubectl create quota myrq --hard=cpu=1,memory=1G,pods=2 --dry-run -o yaml
 
 kubectl get po --all-namespaces
+
+kubectl create deploy nginx --image=nginx --port=80
+kubectl expose deploy nginx --port=80
+
+kubectl set image pod/nginx nginx=nginx:1.7.1
+
+kubectl run busybox --image=busybox --command --restart=Never -- wget 10.28.2.24:80/
+kubectl run busybox --image=busybox -it --restart=Never -- sh
+
+
+kubectl logs nginx -p
+
+kubectl run busybox --image=busybox -it --rm --restart=Never -- /bin/sh -c 'echo hello world'
+
+kubectl run --generator=run-pod/v1 nginx-2 --image=nginx --env "var=val1" -it -- sh
 
 kubectl rollout history deployment.v1.apps/nginx
 kubectl rollout history deployment.v1.apps/nginx --revision=1
@@ -69,8 +84,10 @@ kubectl rollout history deployment.v1.apps/nginx --revision=1
 
 ## Configuration 18%
 
+* 
 
 ```shell
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
 
 ```
 
