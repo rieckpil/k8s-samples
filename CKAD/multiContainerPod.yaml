@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multipod
+  labels:
+    app: multipod
+spec:
+  containers:
+     - name: busybox-one
+       image: busybox
+       command: ["/bin/sh"]
+       args: ["-c", "echo hello; sleep 3600"]
+     - name: busybox-two
+       image: busybox
+       command: ["/bin/sh"]
+       args: ["-c", "ls"]
+  restartPolicy: Never

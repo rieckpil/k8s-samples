@@ -94,6 +94,8 @@ kubectl create secret generic db-user-pass --from-file=./username.txt --from-fil
 ## Multi-Container Pods 10%
 
 
+
+
 ```shell
 
 ```
@@ -109,7 +111,7 @@ kubectl create secret generic db-user-pass --from-file=./username.txt --from-fil
 
 
 ```shell
-
+kubectl get po --show-labels
 ```
 
 ## Services & Networking 13%
