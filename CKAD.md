@@ -30,6 +30,9 @@ kubectl scale deployment.v1.apps/nginx --replicas=5
 
 kubectl run curl --image=radial/busyboxplus:curl -i --tty
 
+kubectl explain po.spec
+
+kubectl get hpa # HorizontalAutoScaler
 ```
 
 ## Core Concepts 13%
@@ -109,9 +112,39 @@ kubectl create secret generic db-user-pass --from-file=./username.txt --from-fil
 
 ## Pod Design 20%
 
-
 ```shell
 kubectl get po --show-labels
+
+kubectl run --generator=run-pod/v1 nginx1 --image=nginx --restart=Never --labels=app=v1
+
+kubectl label po nginx1 app=v2 --overwrite
+
+kubectl get po -L app
+kubectl get po -l app=v2
+
+kubectl label po nginx1 app-
+
+kubectl annotate po nginx1 nginx2 description="My - Description" --overwrite
+
+kubectl annotate po nginx1 nginx2 description-
+
+kubectl get deploy nginx -o yaml
+
+kubectl rollout status deploy nginx
+
+kubectl set image deploy nginx nginx=nginx:1.7.9
+
+kubectl rollout undo deploy nginx
+
+kubectl rollout history deploy nginx --revision=5
+
+kubectl scale deploy nginx --replicas=5
+
+kubectl autoscale deploy nginx --min=5 --max=10 --cpu-percent=80
+
+kubectl create job pi --image=perl -- perl -Mbignum=bpi -wle "print bpi(2000)"
+kubectl create job busybox --image=busybox -- /bin/sh -c "echo hello;sleep 30;echo world"
+
 ```
 
 ## Services & Networking 13%
