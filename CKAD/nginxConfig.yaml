@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+    env:
+      - name: option
+        valueFrom:
+          configMapKeyRef:
+            name: options
+            key: var5
+      - name: secret
+        valueFrom:
+          secretKeyRef:
+            name: pw-secret
+            key: username
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -92,6 +92,15 @@ kubectl rollout history deployment.v1.apps/nginx --revision=1
 ```shell
 kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
 
+kubectl create cm config --from-literal=foo=lala --from-literal=foo2=lolo
+kubectl create cm config-env --from-env-file=config.env
+kubectl create cm config-env --from-file=config.txt
+kubectl create cm config-special --from-file=special=config.txt
+
+kubectl get cm config -o yaml
+
+kubectl create secret generic pw-secret --from-literal=password=mypass
+
 ```
 
 ## Multi-Container Pods 10%

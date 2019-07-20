@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx-vol
+spec:
+  volumes:
+    - name: config
+      configMap:
+        name: config
+    - name: secret
+      secret:
+        secretName: pw-secret
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+    volumeMounts:
+      - name: config
+        mountPath: /etc/lala
+      - name: secret
+        mountPath: /etc/foo
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
