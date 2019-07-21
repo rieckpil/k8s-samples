@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  name: busy-pvc-second
+spec:
+  volumes:
+    - name: pv-storage
+      persistentVolumeClaim:
+        claimName: pvc-normal
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - sleep 3600
+    image: busybox
+    name: busy-pvc
+    resources: {}
+    volumeMounts:
+      - mountPath: /etc/foo
+        name: pv-storage
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
